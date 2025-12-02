@@ -1,0 +1,162 @@
+[
+  {
+    "ISBN": 8,
+    "Titulo": "Introduction to Algorithms",
+    "Autor": "Thomas H. Cormen",
+    "Peso": 1.2,
+    "Valor": 120000,
+    "Stock": 3
+  },
+  {
+    "ISBN": 2,
+    "Titulo": "Artificial Intelligence: A Modern Approach",
+    "Autor": "Stuart Russell",
+    "Peso": 1.4,
+    "Valor": 150000,
+    "Stock": 2
+  },
+  {
+    "ISBN": 3,
+    "Titulo": "Clean Code",
+    "Autor": "Robert C. Martin",
+    "Peso": 3,
+    "Valor": 80000,
+    "Stock": 4
+  },
+  {
+    "ISBN": 6,
+    "Titulo": "The Pragmatic Programmer",
+    "Autor": "Andrew Hunt",
+    "Peso": 0.9,
+    "Valor": 90000,
+    "Stock": 2
+  },
+  {
+    "ISBN": 2,
+    "Titulo": "Design Patterns",
+    "Autor": "Erich Gamma",
+    "Peso": 1.1,
+    "Valor": 110000,
+    "Stock": 1
+  },
+  {
+    "ISBN": 4,
+    "Titulo": "Structure and Interpretation of Computer Programs",
+    "Autor": "Harold Abelson",
+    "Peso": 1.3,
+    "Valor": 100000,
+    "Stock": 1
+  },
+  {
+    "ISBN": 7,
+    "Titulo": "Operating System Concepts",
+    "Autor": "Abraham Silberschatz",
+    "Peso": 2,
+    "Valor": 130000,
+    "Stock": 2
+  },
+  {
+    "ISBN": 1,
+    "Titulo": "Computer Networks",
+    "Autor": "Andrew S. Tanenbaum",
+    "Peso": 1.6,
+    "Valor": 125000,
+    "Stock": 1
+  },
+  {
+    "ISBN": 9,
+    "Titulo": "Database System Concepts",
+    "Autor": "Abraham Silberschatz",
+    "Peso": 1.7,
+    "Valor": 140000,
+    "Stock": 2
+  },
+  {
+    "ISBN": 12,
+    "Titulo": "Compilers: Principles, Alfred V. Aho",
+    "Autor": "Alfred V. Aho",
+    "Peso": 1.2,
+    "Valor": 115000,
+    "Stock": 1
+  },
+  {
+    "ISBN": 11,
+    "Titulo": "Introduction to Machine Learning",
+    "Autor": "Ethem Alpaydin",
+    "Peso": 1.0,
+    "Valor": 105000,
+    "Stock": 3
+  },
+  {
+    "ISBN": 10,
+    "Titulo": "Deep Learning",
+    "Autor": "Ian Goodfellow",
+    "Peso": 1.3,
+    "Valor": 160000,
+    "Stock": 1
+  },
+  {
+    "ISBN": 13,
+    "Titulo": "Python Crash Course",
+    "Autor": "Eric Matthes",
+    "Peso": 0.7,
+    "Valor": 60000,
+    "Stock": 5
+  },
+  {
+    "ISBN": 14,
+    "Titulo": "Learning Python",
+    "Autor": "Mark Lutz",
+    "Peso": 1.8,
+    "Valor": 95000,
+    "Stock": 2
+  },
+  {
+    "ISBN": 15,
+    "Titulo": "Effective Java",
+    "Autor": "Joshua Bloch",
+    "Peso": 5,
+    "Valor": 98000,
+    "Stock": 3
+  },
+  {
+    "ISBN": 16,
+    "Titulo": "Refactoring",
+    "Autor": "Martin Fowler",
+    "Peso": 0.85,
+    "Valor": 90000,
+    "Stock": 2
+  },
+  {
+    "ISBN": 18,
+    "Titulo": "The Art of Computer Programming",
+    "Autor": "Donald E. Knuth",
+    "Peso": 2.5,
+    "Valor": 250000,
+    "Stock": 1
+  },
+  {
+    "ISBN": 17,
+    "Titulo": "Introduction to Statistical Learning",
+    "Autor": "Gareth James",
+    "Peso": 1.1,
+    "Valor": 90000,
+    "Stock": 2
+  },
+  {
+    "ISBN": 20,
+    "Titulo": "Pattern Recognition and Machine Learning",
+    "Autor": "Christopher Bishop",
+    "Peso": 1.4,
+    "Valor": 135000,
+    "Stock": 1
+  },
+  {
+    "ISBN": 19,
+    "Titulo": "Algorithms",
+    "Autor": "Robert Sedgewick",
+    "Peso": 1.6,
+    "Valor": 145000,
+    "Stock": 2
+  }
+]

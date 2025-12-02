@@ -6,15 +6,15 @@ from typing import List
 
 def busqueda_lineal(lista: List, atributo: str, valor: str):
     """Return list of matches (case-insensitive contains)."""
-    valor = valor.lower()
+    valor = valor
     resultado = []
     for item in lista:
         attr = getattr(item, atributo, '')
-        if attr and valor in str(attr).lower():
+        if attr and attr == valor:
             resultado.append(item)
     return resultado
 
-def busqueda_binaria(lista: List, isbn: str):
+def busqueda_binaria(lista: List, isbn: int):
     """Assume lista sorted by ISBN. Return index or -1."""
     low, high = 0, len(lista) - 1
     while low <= high:

@@ -4,7 +4,7 @@ Represents a book entry for the system.
 """
 
 class Libro:
-    def __init__(self, isbn: str, titulo: str, autor: str, peso: float, valor: float, stock: int = 1):
+    def __init__(self, isbn: int, titulo: str, autor: str, peso: float, valor: float, stock: int = 1):
         self.isbn = isbn
         self.titulo = titulo
         self.autor = autor

@@ -6,25 +6,30 @@ Inventory manager: keeps general and ordered lists.
 import csv
 from modelos.Libro import Libro
 from algoritmos.Ordenamientos import insercion_ordenada
+from utils.persistencia import leer_json
 
 class Inventario:
     def __init__(self):
         self.inventario_general = []
-        self.inventario_ordenado = []
+        self.inventario_ordenado = []       
 
-    def cargar_desde_csv(self, ruta_csv: str):
-        with open(ruta_csv, newline='', encoding='utf-8') as f:
-            lector = csv.DictReader(f)
-            for fila in lector:
-                libro = Libro(
-                    fila['ISBN'].strip(),
-                    fila['Titulo'].strip(),
-                    fila['Autor'].strip(),
-                    float(fila['Peso']),
-                    float(fila['Valor']),
-                    int(fila.get('Stock', 1))
-                )
-                self.agregar_libro(libro)
+    def cargar_desde_json(self, ruta_json: str):
+        """Load initial data from a json file
+        
+        :param ruta_json: Path to json file
+        :type ruta_json: str
+        """
+        __books_data: list[dict] = leer_json(ruta_json)
+        for data in __books_data:
+            libro = Libro(
+                data['ISBN'],
+                data['Titulo'].strip(),
+                data['Autor'].strip(),
+                float(data['Peso']),
+                float(data['Valor']),
+                int(data.get('Stock', 1))
+            )
+            self.agregar_libro(libro)
 
     def agregar_libro(self, libro: Libro):
         # add to general (preserve load order)

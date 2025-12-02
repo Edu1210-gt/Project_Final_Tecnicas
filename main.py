@@ -9,7 +9,7 @@ from algoritmos.Estanteria import combinaciones_riesgo, knapsack_backtracking
 from modelos.Libro import Libro
 from utils.persistencia import leer_json, escribir_json
 
-DATA_LIBROS = 'data/libros.csv'
+DATA_LIBROS = 'data/libros.json'
 DATA_HISTORIAL = 'data/historial_prestamos.json'
 DATA_RESERVAS = 'data/reservas.json'
 
@@ -30,7 +30,7 @@ def main():
     inv = Inventario()
     historiales = leer_json(DATA_HISTORIAL)
     reservas = leer_json(DATA_RESERVAS)
-    inv.cargar_desde_csv(DATA_LIBROS)
+    inv.cargar_desde_json(DATA_LIBROS)
     print('Inventory loaded.')
     while True:
         mostrar_menu()
@@ -44,14 +44,14 @@ def main():
                 print(l)
         elif opc == '3':
             campo = input('Search by (titulo/autor): ').strip()
-            q = input('Query: ').strip()
-            res = busqueda_lineal(inv.inventario_general, 'titulo' if campo=='titulo' else 'autor', q)
+            atribute_name = input('Query (titulo/autor): ').strip()
+            res = busqueda_lineal(inv.inventario_general, atribute_name, campo)
             for r in res:
                 print(r)
             if not res:
                 print('No matches')
         elif opc == '4':
-            isbn = input('ISBN: ').strip()
+            isbn = int(input('ISBN: '))
             idx = busqueda_binaria(inv.inventario_ordenado, isbn)
             if idx >= 0:
                 print('Found:', inv.inventario_ordenado[idx])
