@@ -53,3 +53,12 @@ class Inventario:
             books.append(book.to_dict())
 
         return books
+    
+    def prestar_Libro(self, title): pass
+
+    def peso_autor_coleccion(self, libros_autor:list[Libro], promedio:list, weight:float = 0.0, posicion:int = 0):
+        if posicion < len(libros_autor):
+            weight += float(libros_autor[posicion].peso)
+            self.peso_autor_coleccion(libros_autor, promedio, weight, posicion+1)
+        else:
+            promedio[0] = float(weight / len(libros_autor))

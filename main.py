@@ -15,15 +15,16 @@ DATA_RESERVAS = 'data/reservas.json'
 
 def mostrar_menu():
     print('\n=== Library Management System ===')
-    print('1. List general inventory')
-    print('2. List ordered inventory (by ISBN)')
-    print('3. Search by title/author (linear)')
-    print('4. Search by ISBN (binary)')
-    print('5. Generate value report (merge sort)')
-    print('6. Shelving: brute force (combinations of 4 > 8kg)')
-    print('7. Shelving: backtracking (max value <= 8kg)')
-    print('8. Save/Show reservations and historials')
-    print('9. Add Book')
+    print('1.  List general inventory')
+    print('2.  List ordered inventory (by ISBN)')
+    print('3.  Search by title/author (linear)')
+    print('4.  Search by ISBN (binary)')
+    print('5.  Generate value report (merge sort)')
+    print('6.  Shelving: brute force (combinations of 4 > 8kg)')
+    print('7.  Shelving: backtracking (max value <= 8kg)')
+    print('8.  Save/Show reservations and historials')
+    print('9.  Add Book')
+    print('10. Average by author (name)')
     print('0. Exit')
 
 def main():
@@ -83,7 +84,6 @@ def main():
             # Save them back (no change) to ensure files exist
             escribir_json(DATA_HISTORIAL, historiales)
             escribir_json(DATA_RESERVAS, reservas)
-
         elif opc == '9':
             print("Adding a ne book to inventory.")
             isbn =  int(input("ISBN: ").strip())
@@ -96,6 +96,15 @@ def main():
             inv.agregar_libro(book)
             escribir_json(DATA_LIBROS, inv.books_to_dict_list())
             print('The book has been added successfully!')
+        elif opc == '10':
+            autor = input('Type the autor name: ').strip()
+            autor_libros = busqueda_lineal(inv.inventario_general, 'autor', autor)
+            if len(autor_libros):
+                promedio = [None]
+                inv.peso_autor_coleccion(autor_libros, promedio)
+                print(f'The average is: {promedio[0]}')
+            else:
+                print("The author don't exists or don't have books, type a valid author")
         elif opc == '0':
             print('Bye')
             break

@@ -6,11 +6,11 @@ from typing import List
 
 def busqueda_lineal(lista: List, atributo: str, valor: str):
     """Return list of matches (case-insensitive contains)."""
-    valor = valor
+    valor = valor.lower()
     resultado = []
     for item in lista:
         attr = getattr(item, atributo, '')
-        if attr and attr == valor:
+        if attr and attr.lower() == valor:
             resultado.append(item)
     return resultado
 
