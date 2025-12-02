@@ -46,3 +46,10 @@ class Inventario:
 
     def listar_ordenado(self):
         return list(self.inventario_ordenado)
+    
+    def books_to_dict_list(self):
+        books = []
+        for book in self.inventario_general:
+            books.append(book.to_dict())
+
+        return books

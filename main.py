@@ -86,16 +86,16 @@ def main():
 
         elif opc == '9':
             print("Adding a ne book to inventory.")
-            isbn = input("ISBN: ").strip()
+            isbn =  int(input("ISBN: ").strip())
             titulo = input("Title: ").strip()
             autor = input("Author: ").strip()
             peso = float(input("Weight (kg): ").strip())
             valor = float(input("Value (COP): ").strip())
             stock = int(input("Stock (default 1): ").strip())
             book = Libro(isbn,titulo,autor, peso,valor,stock)
-            escribir_json(book.to_dict())
-
-
+            inv.agregar_libro(book)
+            escribir_json(DATA_LIBROS, inv.books_to_dict_list())
+            print('The book has been added successfully!')
         elif opc == '0':
             print('Bye')
             break

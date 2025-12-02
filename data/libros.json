@@ -4,7 +4,7 @@
     "Titulo": "Introduction to Algorithms",
     "Autor": "Thomas H. Cormen",
     "Peso": 1.2,
-    "Valor": 120000,
+    "Valor": 120000.0,
     "Stock": 3
   },
   {
@@ -12,15 +12,15 @@
     "Titulo": "Artificial Intelligence: A Modern Approach",
     "Autor": "Stuart Russell",
     "Peso": 1.4,
-    "Valor": 150000,
+    "Valor": 150000.0,
     "Stock": 2
   },
   {
     "ISBN": 3,
     "Titulo": "Clean Code",
     "Autor": "Robert C. Martin",
-    "Peso": 3,
-    "Valor": 80000,
+    "Peso": 3.0,
+    "Valor": 80000.0,
     "Stock": 4
   },
   {
@@ -28,7 +28,7 @@
     "Titulo": "The Pragmatic Programmer",
     "Autor": "Andrew Hunt",
     "Peso": 0.9,
-    "Valor": 90000,
+    "Valor": 90000.0,
     "Stock": 2
   },
   {
@@ -36,7 +36,7 @@
     "Titulo": "Design Patterns",
     "Autor": "Erich Gamma",
     "Peso": 1.1,
-    "Valor": 110000,
+    "Valor": 110000.0,
     "Stock": 1
   },
   {
@@ -44,15 +44,15 @@
     "Titulo": "Structure and Interpretation of Computer Programs",
     "Autor": "Harold Abelson",
     "Peso": 1.3,
-    "Valor": 100000,
+    "Valor": 100000.0,
     "Stock": 1
   },
   {
     "ISBN": 7,
     "Titulo": "Operating System Concepts",
     "Autor": "Abraham Silberschatz",
-    "Peso": 2,
-    "Valor": 130000,
+    "Peso": 2.0,
+    "Valor": 130000.0,
     "Stock": 2
   },
   {
@@ -60,7 +60,7 @@
     "Titulo": "Computer Networks",
     "Autor": "Andrew S. Tanenbaum",
     "Peso": 1.6,
-    "Valor": 125000,
+    "Valor": 125000.0,
     "Stock": 1
   },
   {
@@ -68,7 +68,7 @@
     "Titulo": "Database System Concepts",
     "Autor": "Abraham Silberschatz",
     "Peso": 1.7,
-    "Valor": 140000,
+    "Valor": 140000.0,
     "Stock": 2
   },
   {
@@ -76,7 +76,7 @@
     "Titulo": "Compilers: Principles, Alfred V. Aho",
     "Autor": "Alfred V. Aho",
     "Peso": 1.2,
-    "Valor": 115000,
+    "Valor": 115000.0,
     "Stock": 1
   },
   {
@@ -84,7 +84,7 @@
     "Titulo": "Introduction to Machine Learning",
     "Autor": "Ethem Alpaydin",
     "Peso": 1.0,
-    "Valor": 105000,
+    "Valor": 105000.0,
     "Stock": 3
   },
   {
@@ -92,7 +92,7 @@
     "Titulo": "Deep Learning",
     "Autor": "Ian Goodfellow",
     "Peso": 1.3,
-    "Valor": 160000,
+    "Valor": 160000.0,
     "Stock": 1
   },
   {
@@ -100,7 +100,7 @@
     "Titulo": "Python Crash Course",
     "Autor": "Eric Matthes",
     "Peso": 0.7,
-    "Valor": 60000,
+    "Valor": 60000.0,
     "Stock": 5
   },
   {
@@ -108,15 +108,15 @@
     "Titulo": "Learning Python",
     "Autor": "Mark Lutz",
     "Peso": 1.8,
-    "Valor": 95000,
+    "Valor": 95000.0,
     "Stock": 2
   },
   {
     "ISBN": 15,
     "Titulo": "Effective Java",
     "Autor": "Joshua Bloch",
-    "Peso": 5,
-    "Valor": 98000,
+    "Peso": 5.0,
+    "Valor": 98000.0,
     "Stock": 3
   },
   {
@@ -124,7 +124,7 @@
     "Titulo": "Refactoring",
     "Autor": "Martin Fowler",
     "Peso": 0.85,
-    "Valor": 90000,
+    "Valor": 90000.0,
     "Stock": 2
   },
   {
@@ -132,7 +132,7 @@
     "Titulo": "The Art of Computer Programming",
     "Autor": "Donald E. Knuth",
     "Peso": 2.5,
-    "Valor": 250000,
+    "Valor": 250000.0,
     "Stock": 1
   },
   {
@@ -140,7 +140,7 @@
     "Titulo": "Introduction to Statistical Learning",
     "Autor": "Gareth James",
     "Peso": 1.1,
-    "Valor": 90000,
+    "Valor": 90000.0,
     "Stock": 2
   },
   {
@@ -148,7 +148,7 @@
     "Titulo": "Pattern Recognition and Machine Learning",
     "Autor": "Christopher Bishop",
     "Peso": 1.4,
-    "Valor": 135000,
+    "Valor": 135000.0,
     "Stock": 1
   },
   {
@@ -156,7 +156,15 @@
     "Titulo": "Algorithms",
     "Autor": "Robert Sedgewick",
     "Peso": 1.6,
-    "Valor": 145000,
+    "Valor": 145000.0,
     "Stock": 2
+  },
+  {
+    "ISBN": 99,
+    "Titulo": "100 años de soleadad",
+    "Autor": "Gabriel Garcia Marquez",
+    "Peso": 2,
+    "Valor": 150000,
+    "Stock": 1
   }
 ]
