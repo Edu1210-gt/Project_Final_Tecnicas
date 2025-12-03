@@ -6,12 +6,21 @@ from estructuras.Inventario import Inventario
 from algoritmos.Busquedas import busqueda_lineal, busqueda_binaria
 from algoritmos.Ordenamientos import merge_sort_por_valor
 from algoritmos.Estanteria import combinaciones_riesgo, knapsack_backtracking
+from modelos.Usuario import Usuario
 from modelos.Libro import Libro
-from utils.persistencia import leer_json, escribir_json
+from utils.persistencia import file_exists, get_filename_from_path, leer_json, escribir_json
 
 DATA_LIBROS = 'data/libros.json'
 DATA_HISTORIAL = 'data/historial_prestamos.json'
 DATA_RESERVAS = 'data/reservas.json'
+DATA_USUARIOS = 'data/usuarios.json'
+
+def create_initial_files():
+    files_paths = [DATA_LIBROS, DATA_HISTORIAL, DATA_RESERVAS, DATA_USUARIOS]
+    for path in files_paths:
+        if not file_exists(path):
+            escribir_json(path, [])
+            print(f"File {get_filename_from_path(path)}")
 
 def mostrar_menu():
     print('\n=== Library Management System ===')
@@ -26,15 +35,18 @@ def mostrar_menu():
     print('9.  Add Book')
     print('10. Average by author')
     print('11. Total value of book by author')
+    print('12.  Add User')
     print('0. Exit')
 
 def main():
+    create_initial_files()
     inv = Inventario()
-    historiales = leer_json(DATA_HISTORIAL)
-    reservas = leer_json(DATA_RESERVAS)
     inv.cargar_desde_json(DATA_LIBROS)
     print('Inventory loaded.')
     while True:
+        usuarios = leer_json(DATA_USUARIOS)
+        historiales = leer_json(DATA_HISTORIAL)
+        reservas = leer_json(DATA_RESERVAS)
         mostrar_menu()
         
         opc = input('Choose an option: ').strip()
@@ -112,6 +124,13 @@ def main():
             if len(author_libros):
                 total = inv.valor_Total(author_libros)
                 print(f"The total is: {total}")
+        elif opc == '12':
+            nombre = input('Type your name: ').strip()
+            usuario = Usuario(nombre)
+            usuarios.append(usuario.to_dict())
+            escribir_json(DATA_USUARIOS, usuarios)
+        elif opc =='13':
+            pass
         elif opc == '0':
             print('Bye')
             break
@@ -119,4 +138,5 @@ def main():
             print('Invalid option')
 
 if __name__ == '__main__':
+    create_initial_files()
     main()
