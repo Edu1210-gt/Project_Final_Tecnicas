@@ -1,11 +1,12 @@
-"""
-Fuerza bruta: list all combinations of 4 books whose total weight > 8 kg.
-Backtracking: 0/1 knapsack maximizing value with weight capacity 8 kg.
-"""
+
 from itertools import combinations
 
 def combinaciones_riesgo(lista_libros, r=4, umbral=8.0):
-    """Return list of tuples (combination, total_weight) where total_weight > umbral."""
+    """The function receives a list of books, the size of the combinations (r), "
+    and a risk threshold. It iterates through all possible combinations of the list with r books each. 
+    For every combination, it calculates a variable called weight, which is the sum of the individual weight of each book. 
+    Then, a conditional statement checks whether this total weight exceeds the threshold. If it does, the combination is added to the result list. After evaluating all combinations, 
+    the function returns the list of risky combinations."""
     resultados = []
     for comb in combinations(lista_libros, r):
         peso = sum(l.peso for l in comb)
@@ -13,30 +14,44 @@ def combinaciones_riesgo(lista_libros, r=4, umbral=8.0):
             resultados.append((comb, peso))
     return resultados
 
-def knapsack_backtracking(libros, capacidad=8.0):
-    """Return best subset maximizing total valor without exceeding capacidad.
-    Uses simple recursive backtracking (exponential but fine for small n).
-    Returns (best_list, best_value)
+def estante_backtracking(libros, capacidad=8.0):
+   
     """
-    n = len(libros)
+    Solves the 0/1 Knapsack problem using a backtracking approach.
+
+    Parameters:
+        libros (list): A list of book objects, each containing 'peso' (weight) and 'valor' (value) attributes.
+        capacidad (float): The maximum allowed total weight.
+
+    Returns:
+        tuple: (best_set, best_value)
+            - best_set: The list of selected books that produces the highest value.
+            - best_value: The maximum total value obtained.
+
+    The algorithm explores all possible combinations of books.
+    For each book, it decides whether to include it or skip it.
+    Any branch that exceeds the weight capacity is immediately discarded.
+    After evaluating all valid combinations, the function returns the one with the highest value.
+    """
+    total_libros = len(libros)
     best_value = 0
     best_set = []
 
     def backtrack(i, current_set, current_weight, current_value):
         nonlocal best_value, best_set
-        # If weight exceeded, prune
+        
         if current_weight > capacidad:
             return
-        # Update best
+
         if current_value > best_value:
             best_value = current_value
             best_set = current_set.copy()
-        # If reached end
-        if i >= n:
+        
+        if i >= total_libros:
             return
-        # Choice: include libros[i]
+    
         backtrack(i+1, current_set + [libros[i]], current_weight + libros[i].peso, current_value + libros[i].valor)
-        # Choice: exclude
+        
         backtrack(i+1, current_set, current_weight, current_value)
 
     backtrack(0, [], 0.0, 0.0)

@@ -1,11 +1,9 @@
-"""
-Main menu and glue code to use all modules.
-"""
+
 import datetime
 from estructuras.Inventario import Inventario
 from algoritmos.Busquedas import busqueda_lineal, busqueda_binaria, busqueda_lineal_usuario
 from algoritmos.Ordenamientos import merge_sort_por_valor
-from algoritmos.Estanteria import combinaciones_riesgo, knapsack_backtracking
+from algoritmos.Estanteria import combinaciones_riesgo, estante_backtracking
 from modelos.Usuario import Usuario
 from modelos.Libro import Libro
 from utils.persistencia import file_exists, get_filename_from_path, leer_json, escribir_json
@@ -82,25 +80,26 @@ def main():
             combos = combinaciones_riesgo(inv.inventario_general, r=4, umbral=8.0)
             print(f'Found {len(combos)} risky combinations:')
             for comb, peso in combos:
-                print('--- combo (peso=', peso, ')')
+                print(' peso total: (peso=', peso, ')')
                 for b in comb:
                     print('  ', b)
         elif opc == '7':
-            best_set, best_value = knapsack_backtracking(inv.inventario_general, capacidad=8.0)
+            best_set, best_value = estante_backtracking(inv.inventario_general, capacidad=8.0)
             print(f'Best value: {best_value} COP with {len(best_set)} books')
             for b in best_set:
                 print('  ', b)
         elif opc == '8':
-            print('Historias (first 10):')
+            print('Historiasles:')
             for h in historiales[:10]:
                 print(h)
-            print('\nReservas (first 10):')
+            print('\nReservas:')
             for r in reservas[:10]:
                 print(r)
             # Save them back (no change) to ensure files exist
             escribir_json(DATA_HISTORIAL, historiales)
             escribir_json(DATA_RESERVAS, reservas)
         elif opc == '9':
+
             print("Adding a ne book to inventory.")
             isbn =  int(input("ISBN: ").strip())
             titulo = input("Title: ").strip()
@@ -137,7 +136,9 @@ def main():
         elif opc =='13':
             print('List of users:')
             for u in usuarios:
-                print(u)
+                user = Usuario()
+                user.from_dict(u)
+                print(user)
         elif opc == '14':
             id_usuario = input('Type your user ID: ').strip()
             titulo_libro = input('Type the book title: ').strip()

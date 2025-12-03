@@ -1,8 +1,5 @@
-"""
-Inventory manager: keeps general and ordered lists.
-- inventario_general: load order
-- inventario_ordenado: maintained sorted by ISBN using insertion sort
-"""
+
+
 import csv
 from modelos.Libro import Libro
 from algoritmos.Ordenamientos import insercion_ordenada
@@ -14,10 +11,22 @@ class Inventario:
         self.inventario_ordenado = []       
 
     def cargar_desde_json(self, ruta_json: str):
-        """Load initial data from a json file
-        
-        :param ruta_json: Path to json file
-        :type ruta_json: str
+        """
+        Loads book data from a JSON file and adds each book to the library.
+
+        This method reads a JSON file containing a list of book dictionaries.
+        Each dictionary must include the keys: 'ISBN', 'Titulo', 'Autor',
+        'Peso', and 'Valor'. An optional 'Stock' field may also be provided;
+        if omitted, the stock defaults to 1.
+
+        The method converts each JSON entry into a `Libro` object and then
+        adds it to the library using `self.agregar_libro()`.
+
+        Parameters:
+            ruta_json (str): The file path to the JSON file containing book data.
+
+        Returns:
+            None: The library is modified in place by adding the loaded books.
         """
         __books_data: list[dict] = leer_json(ruta_json)
         for data in __books_data:
@@ -32,7 +41,20 @@ class Inventario:
             self.agregar_libro(libro)
 
     def agregar_libro(self, libro: Libro):
-        
+        """
+    Adds a book to the library's inventory.
+
+    This method inserts the given `Libro` object into two internal lists:
+    - `inventario_general`: A list containing all books in the order they were added.
+    - `inventario_ordenado`: A list kept sorted by ISBN, where the book is inserted
+      using the `insercion_ordenada()` function.
+
+    Parameters:
+        libro (Libro): The book object to be added to the inventory.
+
+    Returns:
+        None: The internal inventories are modified in place.
+    """
         self.inventario_general.append(libro)
         
         insercion_ordenada(self.inventario_ordenado, libro)
@@ -55,6 +77,33 @@ class Inventario:
         return books
     
     def prestar_Libro(self, title, id):
+        """
+    Attempts to loan a book to a user. If the book is available, the stock is
+    reduced, the loan is recorded, and the updated data is written to JSON files.
+    If the book is not available, a reservation is created for the user.
+
+    The method performs the following steps:
+    1. Loads the current loan history from 'historial_prestamos.json'.
+    2. Searches the general inventory for a book matching the given title.
+    3. If the book exists and has available stock:
+         - Decreases the stock by 1.
+         - Records the loan in the history.
+         - Saves updated book and history data to their respective JSON files.
+         - Returns the ISBN of the loaned book.
+    4. If no copies are available:
+         - Loads reservation data from 'reservas.json'.
+         - Adds a reservation entry for the user.
+         - Saves the updated reservations back to the JSON file.
+
+    Parameters:
+        title (str): The title of the book requested by the user.
+        id (str or int): The ID of the user requesting the loan.
+
+    Returns:
+        int or None:
+            The ISBN of the loaned book if the loan is successful.
+            None if the book was not loaned (i.e., a reservation was created).
+    """
         history = leer_json('data/historial_prestamos.json')
         for book in self.inventario_general:
             if book.titulo == title and book.stock > 0:
@@ -69,8 +118,11 @@ class Inventario:
         escribir_json('data/reservas.json', reservas)
                 
                 
-            
+    
     def devolver_Libro(self, title):
+        """"The function receives `self` and `titles` as parameters.
+            It follows a loop that iterates through the inventory book by book. If `book.title` equals the title entered by the user, 
+            it increments the stock and modifies the `libros.json` file to save the changes."""
         for book in self.inventario_general:
             if book.titulo == title:
                 book.stock += 1
@@ -78,6 +130,27 @@ class Inventario:
                 
                 
     def peso_autor_coleccion(self, libros_autor:list[Libro], promedio:list, weight:float = 0.0, posicion:int = 0):
+        """
+    Recursively calculates the average weight of a collection of books 
+    written by the same author.
+
+    This method receives a list of books (`libros_autor`) and accumulates 
+    their total weight via recursion. Once the recursion reaches the end 
+    of the list, it stores the computed average in the first position of 
+    the `promedio` list.
+
+    Args:
+        libros_autor (list[Libro]): The list of books written by the author.
+        promedio (list): A single-element list used to store the resulting 
+            average weight.
+        weight (float, optional): The accumulated weight during recursion. 
+            Defaults to 0.0.
+        posicion (int, optional): The current index in the recursive call. 
+            Defaults to 0.
+
+    Returns:
+        None: The result is stored directly in `promedio[0]`.
+    """
         if posicion < len(libros_autor):
             weight += float(libros_autor[posicion].peso)
             self.peso_autor_coleccion(libros_autor, promedio, weight, posicion+1)
@@ -86,6 +159,24 @@ class Inventario:
 
 
     def valor_Total(self, libros_author: list, acount : float =0, posicion : int = 0):
+        """
+    Recursively computes the total monetary value of a list of books.
+
+    This function iterates recursively through the list `libros_author`,
+    accumulating the `valor` attribute of each book. When the recursion
+    reaches the end of the list, it returns the final accumulated value.
+
+    Args:
+        libros_author (list): A list of book objects, each containing a 
+            `valor` attribute representing its value.
+        acount (float, optional): The running total of accumulated value 
+            during the recursive calls. Defaults to 0.
+        posicion (int, optional): Current index of the recursive iteration.
+            Defaults to 0.
+
+    Returns:
+        float: The total value of all books in the list.
+    """
 
         if posicion == len(libros_author):
 
@@ -94,4 +185,3 @@ class Inventario:
         acount += float(libros_author[posicion].valor)
 
         return self.valor_Total(libros_author, acount, posicion+1)
-
