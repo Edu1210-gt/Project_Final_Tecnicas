@@ -13,7 +13,7 @@
     "Autor": "Stuart Russell",
     "Peso": 1.4,
     "Valor": 150000.0,
-    "Stock": 2
+    "Stock": 1
   },
   {
     "ISBN": 3,
@@ -29,7 +29,7 @@
     "Autor": "Andrew Hunt",
     "Peso": 0.9,
     "Valor": 90000.0,
-    "Stock": 2
+    "Stock": 0
   },
   {
     "ISBN": 2,

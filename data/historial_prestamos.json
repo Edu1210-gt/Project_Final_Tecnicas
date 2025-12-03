@@ -1,6 +1,10 @@
 [
   {
     "id_usuario": "1054538065",
-    "titulo_libro": "Introduction to Algorithms"
+    "titulo_libro": "The Pragmatic Programmer"
+  },
+  {
+    "id_usuario": "1054538065",
+    "titulo_libro": "Artificial Intelligence: A Modern Approach"
   }
 ]

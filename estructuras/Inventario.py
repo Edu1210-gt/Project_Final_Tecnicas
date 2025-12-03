@@ -32,9 +32,9 @@ class Inventario:
             self.agregar_libro(libro)
 
     def agregar_libro(self, libro: Libro):
-        # add to general (preserve load order)
+        
         self.inventario_general.append(libro)
-        # insert into ordered list by ISBN using insertion algorithm
+        
         insercion_ordenada(self.inventario_ordenado, libro)
 
     def eliminar_por_isbn(self, isbn: str):
@@ -55,11 +55,13 @@ class Inventario:
         return books
     
     def prestar_Libro(self, title, id):
+        history = leer_json('data/historial_prestamos.json')
         for book in self.inventario_general:
             if book.titulo == title and book.stock > 0:
                 book.stock -= 1
+                history.append({"id_usuario": id, "titulo_libro": title})
                 escribir_json('data/libros.json',self.books_to_dict_list())
-                escribir_json('data/historial_prestamos.json', [{"id_usuario": id, "titulo_libro": title}])
+                escribir_json('data/historial_prestamos.json', history)
                 return book.isbn
                 
         reservas = leer_json('data/reservas.json') 
