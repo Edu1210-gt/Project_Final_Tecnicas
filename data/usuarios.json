@@ -1,7 +1,16 @@
 [
   {
-    "id": "910285d5-b5ca-4cb2-bdf6-3d35b8abf667",
-    "nombre": "Santiago Rivera",
-    "historial": []
+    "id": "1054538065",
+    "nombre": "Juan",
+    "historial": [
+      {
+        "Title": "100 años de soleadad",
+        "fecha": "2025-12-02"
+      },
+      {
+        "Title": "Introduction to Algorithms",
+        "fecha": "2025-12-02"
+      }
+    ]
   }
 ]

@@ -4,6 +4,10 @@ Linear search (by title or author) and binary search (by ISBN)
 
 from typing import List
 
+from estructuras.Pila import Pila
+from modelos.Usuario import Usuario
+
+
 def busqueda_lineal(lista: List, atributo: str, valor: str):
     """Return list of matches (case-insensitive contains)."""
     valor = valor.lower()
@@ -26,3 +30,15 @@ def busqueda_binaria(lista: List, isbn: int):
         else:
             high = mid - 1
     return -1
+
+def busqueda_lineal_usuario(lista: list, atributo: str, id: str):
+    """Return list of matches (case-insensitive contains)."""
+    resultado = None
+    for i,item in enumerate(lista):
+        attr = item.get(atributo)
+        if attr and attr == id:
+            historial = Pila()
+            for h in item['historial']:
+                historial.push(h)
+            resultado = [Usuario(item['id'], item['nombre'], historial),i]
+    return resultado

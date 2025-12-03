@@ -6,7 +6,7 @@ Inventory manager: keeps general and ordered lists.
 import csv
 from modelos.Libro import Libro
 from algoritmos.Ordenamientos import insercion_ordenada
-from utils.persistencia import leer_json
+from utils.persistencia import escribir_json, leer_json
 
 class Inventario:
     def __init__(self):
@@ -54,9 +54,27 @@ class Inventario:
 
         return books
     
-    def prestar_Libro(self, title):
-        pass
-
+    def prestar_Libro(self, title, id):
+        for book in self.inventario_general:
+            if book.titulo == title and book.stock > 0:
+                book.stock -= 1
+                escribir_json('data/libros.json',self.books_to_dict_list())
+                escribir_json('data/historial_prestamos.json', [{"id_usuario": id, "titulo_libro": title}])
+                return book.isbn
+                
+        reservas = leer_json('data/reservas.json') 
+        reservas.append({"id_usuario": id, "titulo_libro": title})
+        escribir_json('data/reservas.json', reservas)
+                
+                
+            
+    def devolver_Libro(self, title):
+        for book in self.inventario_general:
+            if book.titulo == title:
+                book.stock += 1
+        escribir_json('data/libros.json',self.books_to_dict_list())
+                
+                
     def peso_autor_coleccion(self, libros_autor:list[Libro], promedio:list, weight:float = 0.0, posicion:int = 0):
         if posicion < len(libros_autor):
             weight += float(libros_autor[posicion].peso)

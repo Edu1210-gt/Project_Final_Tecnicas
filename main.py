@@ -3,7 +3,7 @@ Main menu and glue code to use all modules.
 """
 import datetime
 from estructuras.Inventario import Inventario
-from algoritmos.Busquedas import busqueda_lineal, busqueda_binaria
+from algoritmos.Busquedas import busqueda_lineal, busqueda_binaria, busqueda_lineal_usuario
 from algoritmos.Ordenamientos import merge_sort_por_valor
 from algoritmos.Estanteria import combinaciones_riesgo, knapsack_backtracking
 from modelos.Usuario import Usuario
@@ -35,7 +35,10 @@ def mostrar_menu():
     print('9.  Add Book')
     print('10. Average by author')
     print('11. Total value of book by author')
-    print('12.  Add User')
+    print('12. Add User')
+    print('13. List Users')
+    print('14. lend book')
+    print('15. return book')
     print('0. Exit')
 
 def main():
@@ -126,11 +129,39 @@ def main():
                 print(f"The total is: {total}")
         elif opc == '12':
             nombre = input('Type your name: ').strip()
-            usuario = Usuario(nombre)
+            id = input('Type your ID: ').strip()
+            usuario = Usuario(id, nombre) 
             usuarios.append(usuario.to_dict())
             escribir_json(DATA_USUARIOS, usuarios)
+            print('User added successfully!')
         elif opc =='13':
-            pass
+            print('List of users:')
+            for u in usuarios:
+                print(u)
+        elif opc == '14':
+            id_usuario = input('Type your user ID: ').strip()
+            titulo_libro = input('Type the book title: ').strip()
+            
+            libro_prestado = inv.prestar_Libro(titulo_libro, id_usuario)
+            if libro_prestado:
+                print(f'The book has been lent successfully! ISBN: {libro_prestado}')
+                users = leer_json(DATA_USUARIOS)
+                user = busqueda_lineal_usuario(users, 'id', id_usuario)
+                if user:
+                    user[0].add_historial({'Title': titulo_libro, 'fecha': str(datetime.date.today())})
+                    users[user[1]]= user[0].to_dict()
+                    escribir_json(DATA_USUARIOS, users)
+            else:
+                print('Book not available, you have been added to the reservation list.')
+            
+            
+        
+        elif opc == '15':
+            titulo_libro = input('Type the book title to return: ').strip()
+            inv.devolver_Libro(titulo_libro)
+            escribir_json(DATA_LIBROS, inv.books_to_dict_list())
+            print('The book has been returned successfully!')
+
         elif opc == '0':
             print('Bye')
             break

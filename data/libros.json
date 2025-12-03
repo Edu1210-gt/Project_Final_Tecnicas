@@ -5,7 +5,7 @@
     "Autor": "Thomas H. Cormen",
     "Peso": 1.2,
     "Valor": 120000.0,
-    "Stock": 3
+    "Stock": 2
   },
   {
     "ISBN": 2,
@@ -101,7 +101,7 @@
     "Autor": "Eric Matthes",
     "Peso": 0.7,
     "Valor": 60000.0,
-    "Stock": 5
+    "Stock": 3
   },
   {
     "ISBN": 14,
@@ -163,8 +163,8 @@
     "ISBN": 99,
     "Titulo": "100 años de soleadad",
     "Autor": "Gabriel Garcia Marquez",
-    "Peso": 2,
-    "Valor": 150000,
-    "Stock": 1
+    "Peso": 2.0,
+    "Valor": 150000.0,
+    "Stock": 0
   }
 ]
