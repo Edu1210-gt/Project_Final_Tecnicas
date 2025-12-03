@@ -24,7 +24,8 @@ def mostrar_menu():
     print('7.  Shelving: backtracking (max value <= 8kg)')
     print('8.  Save/Show reservations and historials')
     print('9.  Add Book')
-    print('10. Average by author (name)')
+    print('10. Average by author')
+    print('11. Total value of book by author')
     print('0. Exit')
 
 def main():
@@ -97,7 +98,7 @@ def main():
             escribir_json(DATA_LIBROS, inv.books_to_dict_list())
             print('The book has been added successfully!')
         elif opc == '10':
-            autor = input('Type the autor name: ').strip()
+            autor = input('Type the author name: ').strip()
             autor_libros = busqueda_lineal(inv.inventario_general, 'autor', autor)
             if len(autor_libros):
                 promedio = [None]
@@ -105,6 +106,12 @@ def main():
                 print(f'The average is: {promedio[0]}')
             else:
                 print("The author don't exists or don't have books, type a valid author")
+        elif opc == '11':
+            author = input('Type the author name: ').strip()
+            author_libros = busqueda_lineal(inv.inventario_general, 'autor', author)
+            if len(author_libros):
+                total = inv.valor_Total(author_libros)
+                print(f"The total is: {total}")
         elif opc == '0':
             print('Bye')
             break

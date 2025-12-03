@@ -54,7 +54,8 @@ class Inventario:
 
         return books
     
-    def prestar_Libro(self, title): pass
+    def prestar_Libro(self, title):
+        pass
 
     def peso_autor_coleccion(self, libros_autor:list[Libro], promedio:list, weight:float = 0.0, posicion:int = 0):
         if posicion < len(libros_autor):
@@ -62,3 +63,15 @@ class Inventario:
             self.peso_autor_coleccion(libros_autor, promedio, weight, posicion+1)
         else:
             promedio[0] = float(weight / len(libros_autor))
+
+
+    def valor_Total(self, libros_author: list, acount : float =0, posicion : int = 0):
+
+        if posicion == len(libros_author):
+
+            return acount 
+        
+        acount += float(libros_author[posicion].valor)
+
+        return self.valor_Total(libros_author, acount, posicion+1)
+
