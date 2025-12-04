@@ -80,7 +80,7 @@ def main():
             combos = combinaciones_riesgo(inv.inventario_general, r=4, umbral=8.0)
             print(f'Found {len(combos)} risky combinations:')
             for comb, peso in combos:
-                print(' peso total: (peso=', peso, ')')
+                print(' peso total: (peso: ', peso, ')')
                 for b in comb:
                     print('  ', b)
         elif opc == '7':

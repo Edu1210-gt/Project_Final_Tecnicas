@@ -39,5 +39,9 @@ class Pila:
     def __len__(self):
         return len(self.items)
 
+    def set_from_list(self, all_items: list[dict]):
+        for item in all_items:
+            self.push(item)
+
     def to_list(self):
         return list(self.items)

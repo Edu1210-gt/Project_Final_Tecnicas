@@ -141,7 +141,7 @@
     "Autor": "Gareth James",
     "Peso": 1.1,
     "Valor": 90000.0,
-    "Stock": 2
+    "Stock": 1
   },
   {
     "ISBN": 20,
@@ -157,7 +157,7 @@
     "Autor": "Robert Sedgewick",
     "Peso": 1.6,
     "Valor": 145000.0,
-    "Stock": 2
+    "Stock": 0
   },
   {
     "ISBN": 99,

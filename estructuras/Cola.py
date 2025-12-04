@@ -42,3 +42,7 @@ class Cola:
 
     def to_list(self):
         return list(self.items)
+    
+    def setfrom(self, all_items : list[dict]):
+        for item in all_items:
+            self.enqueue(item)

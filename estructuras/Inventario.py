@@ -1,6 +1,9 @@
 
 
 import csv
+from algoritmos.Busquedas import existe_reserva
+from estructuras.Cola import Cola
+from estructuras.Pila import Pila
 from modelos.Libro import Libro
 from algoritmos.Ordenamientos import insercion_ordenada
 from utils.persistencia import escribir_json, leer_json
@@ -104,18 +107,40 @@ class Inventario:
             The ISBN of the loaned book if the loan is successful.
             None if the book was not loaned (i.e., a reservation was created).
     """
-        history = leer_json('data/historial_prestamos.json')
+        pila_historial = Pila()
+        cola_reserva = Cola()
+        pila_historial.set_from_list(leer_json('data/historial_prestamos.json'))
+        cola_reserva.setfrom(leer_json('data/reservas.json'))
+        datos = {"id_usuario": id, "titulo_libro": title}
+        existereserva = existe_reserva(cola_reserva.items, datos)
+        print(existereserva)
+        
         for book in self.inventario_general:
             if book.titulo == title and book.stock > 0:
                 book.stock -= 1
-                history.append({"id_usuario": id, "titulo_libro": title})
+                pila_historial.push(datos)
                 escribir_json('data/libros.json',self.books_to_dict_list())
-                escribir_json('data/historial_prestamos.json', history)
-                return book.isbn
+                escribir_json('data/historial_prestamos.json', pila_historial.items)
+
+                # Dequeue reservation just if exists
+                if existereserva[1] == 0:
+                    if existereserva[0]:
+                        # Si el usurario está encolado en reservas posicion 3 (Ej.), y el libro
+                        # ya está disponible, el libro, se presta, pero, el usuario queda
+                        # encolado porque hay mas reservas antes de el ...
+                        cola_reserva.dequeue()
+                        escribir_json('data/reservas.json', cola_reserva.items)
+                else:
+                    print('The reservation is not the first in the queue')
                 
-        reservas = leer_json('data/reservas.json') 
-        reservas.append({"id_usuario": id, "titulo_libro": title})
-        escribir_json('data/reservas.json', reservas)
+                return book.isbn
+        
+        # User and title should be differents
+        if not existereserva[0]:
+            cola_reserva.enqueue(datos)
+            escribir_json('data/reservas.json', cola_reserva.items)
+        else:
+            print('The reservation already exists, be patient')
                 
                 
     

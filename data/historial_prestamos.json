@@ -1,10 +1,14 @@
 [
   {
     "id_usuario": "1054538065",
-    "titulo_libro": "The Pragmatic Programmer"
+    "titulo_libro": "100 años de soleadad"
   },
   {
     "id_usuario": "1054538065",
-    "titulo_libro": "Artificial Intelligence: A Modern Approach"
+    "titulo_libro": "100 años de soleadad"
+  },
+  {
+    "id_usuario": "1054538065",
+    "titulo_libro": "Algorithms"
   }
 ]

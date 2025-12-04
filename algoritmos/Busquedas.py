@@ -65,3 +65,14 @@ def busqueda_lineal_usuario(lista: list, atributo: str, id: str):
             resultado = [Usuario(item['id'], item['nombre'], historial),i]
     return resultado
     """Return the found user object and its index, or None if not found."""
+def actualizarUsuario(id:str, obj: dict):
+    # Can i use dict.update({key:value})
+    pass
+
+def existe_reserva(reservas: list[dict], obj: dict):
+    for i, reserva in enumerate(reservas):
+        __id_usuario = reserva.get('id_usuario')
+        __title_book = reserva.get('titulo_libro')
+        if __id_usuario and __id_usuario == obj.get('id_usuario') and __title_book and __title_book == obj.get('titulo_libro'):
+            return [True, i]
+    return [False, -1]
