@@ -32,14 +32,6 @@
     "Stock": 0
   },
   {
-    "ISBN": 2,
-    "Titulo": "Design Patterns",
-    "Autor": "Erich Gamma",
-    "Peso": 1.1,
-    "Valor": 110000.0,
-    "Stock": 1
-  },
-  {
     "ISBN": 4,
     "Titulo": "Structure and Interpretation of Computer Programs",
     "Autor": "Harold Abelson",
@@ -53,7 +45,7 @@
     "Autor": "Abraham Silberschatz",
     "Peso": 2.0,
     "Valor": 130000.0,
-    "Stock": 2
+    "Stock": 1
   },
   {
     "ISBN": 1,
@@ -165,6 +157,38 @@
     "Autor": "Gabriel Garcia Marquez",
     "Peso": 2.0,
     "Valor": 150000.0,
-    "Stock": 0
+    "Stock": 1
+  },
+  {
+    "ISBN": 34,
+    "Titulo": "MAtrix",
+    "Autor": "Jose",
+    "Peso": 3.0,
+    "Valor": 20000.0,
+    "Stock": 2
+  },
+  {
+    "ISBN": 66,
+    "Titulo": "Los tiempos de colera",
+    "Autor": "Gabriel Garcia Marquez",
+    "Peso": 3.0,
+    "Valor": 40000.0,
+    "Stock": 3
+  },
+  {
+    "ISBN": 100,
+    "Titulo": "Titanic",
+    "Autor": "Mario",
+    "Peso": 3.0,
+    "Valor": 50000.0,
+    "Stock": 2
+  },
+  {
+    "ISBN": 17,
+    "Titulo": "Jhonny",
+    "Autor": "Jhonny",
+    "Peso": 2.0,
+    "Valor": 20000.0,
+    "Stock": 2
   }
 ]

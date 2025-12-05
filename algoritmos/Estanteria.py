@@ -9,7 +9,7 @@ def combinaciones_riesgo(lista_libros, r=4, umbral=8.0):
     the function returns the list of risky combinations."""
     resultados = []
     for comb in combinations(lista_libros, r):
-        peso = sum(l.peso for l in comb)
+        peso = sum(lib.peso for lib in comb)
         if peso > umbral:
             resultados.append((comb, peso))
     return resultados
@@ -45,7 +45,7 @@ def estante_backtracking(libros, capacidad=8.0):
 
         if current_value > best_value:
             best_value = current_value
-            best_set = current_set.copy()
+            best_set = current_set
         
         if i >= total_libros:
             return

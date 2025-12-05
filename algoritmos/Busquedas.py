@@ -66,7 +66,7 @@ def busqueda_lineal_usuario(lista: list, atributo: str, id: str):
     return resultado
     """Return the found user object and its index, or None if not found."""
 def actualizarUsuario(id:str, obj: dict):
-    # Can i use dict.update({key:value})
+    dict.update
     pass
 
 def existe_reserva(reservas: list[dict], obj: dict):

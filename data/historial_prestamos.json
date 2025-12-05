@@ -10,5 +10,21 @@
   {
     "id_usuario": "1054538065",
     "titulo_libro": "Algorithms"
+  },
+  {
+    "id_usuario": "345671231",
+    "titulo_libro": "Operating System Concepts"
+  },
+  {
+    "id_usuario": "345671231",
+    "titulo_libro": "Algorithms"
+  },
+  {
+    "id_usuario": "98657433",
+    "titulo_libro": "Artificial Intelligence: A Modern Approach"
+  },
+  {
+    "id_usuario": "34567812",
+    "titulo_libro": "The Pragmatic Programmer"
   }
 ]

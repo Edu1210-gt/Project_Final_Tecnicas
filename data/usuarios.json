@@ -26,5 +26,39 @@
     "id": "1234543",
     "nombre": "Andres",
     "historial": []
+  },
+  {
+    "id": "345671231",
+    "nombre": "Jhonny",
+    "historial": [
+      {
+        "Title": "Operating System Concepts",
+        "fecha": "2025-12-05"
+      },
+      {
+        "Title": "Algorithms",
+        "fecha": "2025-12-05"
+      }
+    ]
+  },
+  {
+    "id": "34567812",
+    "nombre": "Nicolas",
+    "historial": [
+      {
+        "Title": "The Pragmatic Programmer",
+        "fecha": "2025-12-05"
+      }
+    ]
+  },
+  {
+    "id": "98657433",
+    "nombre": "Samuel",
+    "historial": [
+      {
+        "Title": "Artificial Intelligence: A Modern Approach",
+        "fecha": "2025-12-05"
+      }
+    ]
   }
 ]

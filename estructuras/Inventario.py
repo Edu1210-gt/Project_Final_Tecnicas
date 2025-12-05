@@ -11,7 +11,8 @@ from utils.persistencia import escribir_json, leer_json
 class Inventario:
     def __init__(self):
         self.inventario_general = []
-        self.inventario_ordenado = []       
+        self.inventario_ordenado = [] 
+       
 
     def cargar_desde_json(self, ruta_json: str):
         """
@@ -113,7 +114,6 @@ class Inventario:
         cola_reserva.setfrom(leer_json('data/reservas.json'))
         datos = {"id_usuario": id, "titulo_libro": title}
         existereserva = existe_reserva(cola_reserva.items, datos)
-        print(existereserva)
         
         for book in self.inventario_general:
             if book.titulo == title and book.stock > 0:
@@ -210,3 +210,29 @@ class Inventario:
         acount += float(libros_author[posicion].valor)
 
         return self.valor_Total(libros_author, acount, posicion+1)
+    
+    def masCaro(self,lista, indice = 0):
+
+        if indice == len(lista)-1:
+            return lista[indice]
+        
+        masCaroRestante = self.masCaro(lista, indice + 1)
+
+        if lista[indice].valor > masCaroRestante.valor:
+            return lista[indice]
+        else:
+            return masCaroRestante
+
+
+    
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+  

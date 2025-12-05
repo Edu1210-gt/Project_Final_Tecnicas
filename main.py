@@ -7,7 +7,6 @@ from algoritmos.Estanteria import combinaciones_riesgo, estante_backtracking
 from modelos.Usuario import Usuario
 from modelos.Libro import Libro
 from utils.persistencia import file_exists, get_filename_from_path, leer_json, escribir_json
-
 DATA_LIBROS = 'data/libros.json'
 DATA_HISTORIAL = 'data/historial_prestamos.json'
 DATA_RESERVAS = 'data/reservas.json'
@@ -162,6 +161,10 @@ def main():
             inv.devolver_Libro(titulo_libro)
             escribir_json(DATA_LIBROS, inv.books_to_dict_list())
             print('The book has been returned successfully!')
+        elif opc == '16':
+            libroCaro = inv.masCaro(inv.inventario_general)
+            print(libroCaro)
+
 
         elif opc == '0':
             print('Bye')
